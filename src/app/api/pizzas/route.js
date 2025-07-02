@@ -32,7 +32,7 @@ export async function GET(request) {
 
     if (pizzaType) {
         const pizza = pizzas[pizzaType.toLowerCase()];
-        console.log(pizzaType.toLowerCase());
+        console.log(pizza);
         return pizza ? Response.json(pizza) : new Response(JSON.stringify({ error: "Rapper not found" }), {
             status: 404,
             headers: { "Content-Type": "application/json" },
