@@ -28,10 +28,11 @@ const pizzas = [
 
 export async function GET(request) {
     const { searchParams, _ } = new URL(request.url)
-    const pizzaType = searchParams.get('type').toLowerCase();
+    const pizzaType = searchParams.get('type');
 
     if (pizzaType) {
-        const pizza = pizzas[pizzaType];
+        const pizza = pizzas[pizzaType.toLowerCase()];
+        console.log(pizzaType.toLowerCase());
         return pizza ? Response.json(pizza) : new Response(JSON.stringify({ error: "Rapper not found" }), {
             status: 404,
             headers: { "Content-Type": "application/json" },
